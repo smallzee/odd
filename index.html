@@ -43,11 +43,7 @@
 									<input type="text" class="form-control" required name="odd" id="odd" placeholder="Odd">
 								</div>
 
-								<div class="form-group">
-									<input type="submit" class="btn btn-primary" value="Calculate" id="calculate" name="">
-								</div>
-
-								<p id="result"></p>
+								<p class="result text-success"></p>
 							</form>
 
 						</div>
@@ -61,14 +57,15 @@
 
 <script type="text/javascript">
 	$(function(e){
-		$("#calculate").click(function(e){
-			e.preventDefault();
+
+		$("#amount, #odd").blur(function(){
 			var amount = parseFloat($("#amount").val());
 			var odd = parseFloat($("#odd").val());
 
-			var total_amount = (amount / 100)  * odd;
-
-			$("#result").html("Result : "+total_amount);
+			if (amount >=0 && odd >= 0) {
+				var total_amount = (amount / 100)  * odd;
+				$(".result").html("Result : "+total_amount);
+			}
 		});
 	});
 </script>
